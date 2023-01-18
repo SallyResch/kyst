@@ -9,33 +9,33 @@ class Form extends Component {
         if(props.error) {
             this.state = {
                 failure: 'wrong username or password!',
-                errcount: 0
+                errorcount: 0
             }
         } else {
-            this.state = { errcount: 0 }
+            this.state = { errorcount: 0 }
         }
     }
 
-    handleError = (field, errmsg) => {
+    handleError = (field, errormsg) => {
         if(!field) return
 
-        if(errmsg) {
+        if(errormsg) {
             this.setState((prevState) => ({
                 failure: '',
-                errcount: prevState.errcount + 1,
-                errmsgs: {...prevState.errmsgs, [field]: errmsg}
+                errorcount: prevState.errorcount + 1,
+                errormsgs: {...prevState.errormsgs, [field]: errormsg}
             }))
         } else {
             this.setState((prevState) => ({
                 failure: '',
-                errcount: prevState.errcount===1? 0 : prevState.errcount-1,
-                errmsgs: {...prevState.errmsgs, [field]: ''}
+                errorcount: prevState.errorcount===1? 0 : prevState.errorcount-1,
+                errormsgs: {...prevState.errormsgs, [field]: ''}
             }))
         }
     }
     handleSubmit = (event) => {
         event.preventDefault()
-        if(!this.state.errcount) {
+        if(!this.state.errorcount) {
             const data = new FormData(this.form)
             fetch(this.form.action, {
                 method: this.form.method,
@@ -49,10 +49,10 @@ class Form extends Component {
     }
 
     renderError = () => {
-        if(this.state.errcount || this.state.failure) {
-            const errmsg = this.state.failure
-                || Object.values(this.state.errmsgs).find(v=>v)
-            return <div className="error">{errmsg}</div>
+        if(this.state.errorcount || this.state.failure) {
+            const errormsg = this.state.failure
+                || Object.values(this.state.errormsgs).find(v=>v)
+            return <div className="error">{errormsg}</div>
         }
     }
 
