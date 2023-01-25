@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class User {
 
     @Id
@@ -18,6 +18,7 @@ public class User {
     private String lastName;
     private String email;
     private int phoneNumber;
+    private String username;
     private String password;
     private LocalDateTime created = LocalDateTime.now();
 
@@ -25,11 +26,13 @@ public class User {
                 String lastName,
                 String email,
                 int phoneNumber,
+                String username,
                 String password, LocalDateTime created) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.username = username;
         this.password = password;
         this.created = created;
     }
@@ -46,6 +49,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", created='" + created + '\'' +
                 '}';

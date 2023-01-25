@@ -39,6 +39,7 @@ public class UserController {
         currentUser.setLastName(user.getLastName());
         currentUser.setEmail(user.getEmail());
         currentUser.setPhoneNumber(user.getPhoneNumber());
+        currentUser.setUsername(user.getUsername());
         currentUser.setPassword(user.getPassword());
         currentUser.setCreated(user.getCreated());
 
